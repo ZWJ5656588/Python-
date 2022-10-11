@@ -1,1 +1,1 @@
-# Python自己写着玩- as a rockey in CS
+# Python学习记录- as a rockey in CS
