@@ -213,6 +213,35 @@ print("-" * 20)
 
 
 # 4.2多继承
+class Camera:
+    def take_photo(self):
+        """拍照功能"""
+        print("正在拍照...")
+
+
+class MP3:
+    def play_music(self):
+        """播放音乐功能"""
+        print("正在播放音乐...")
+
+
+class Telephone(Camera, MP3):
+    def call(self):
+        """打电话"""
+        print("正在打电话...")
+
+    def answer(self):
+        """接电话"""
+        print("正在接电话...")
+
+
+phone = Telephone()
+phone.call()
+phone.answer()
+phone.take_photo()
+phone.play_music()
+
+print("-"*20)
 
 
 # 5.1方法重写
@@ -316,10 +345,10 @@ class Father:
 
 
 class Son(Father):
-    def __init__(self, name, age, college):
+    def __init__(self,name,age,college):
         # 需要在子类的构造方法中调用父类的构造方法
         # 因为在父类中有两个实例属性，在子类中将两个实例属性传递给父类
-        super().__init__(name, age)
+        super().__init__(name,age)
         self.college = college
 
     def __str__(self):
@@ -327,19 +356,25 @@ class Son(Father):
 
 
 class GrandChild(Son):
-    def __init__(self, *args, **kwargs):  # 孙子类实例化时自动调用__init__就已经打印了“当前子类需要完成的其他事情....”
-        super().__init__(*args, **kwargs)  # 父类（儿子类）没有打印
+    def __init__(self,address,*args,**kwargs):  # 孙子类实例化时自动调用__init__就已经打印了“当前子类需要完成的其他事情....”
+        super().__init__(*args) # 父类（儿子类）没有打印
+        self.address=address
+        self.gender=kwargs['gender']
         print("当前子类需要完成的其他事情....")
+
+    def __str__(self):
+        return "%s的年龄是 %d,他的学历是 %s,住址是 %s,性别是%s" % (self.name, self.age, self.college,self.address,self.gender)
+
 
 
 father = Father("父亲", 50)
 print(father)
 
-son = Son("儿子", 26, "研究生")
+son = Son("儿子", 26,"研究生")
 print(son)
 
-grand_child = GrandChild("孙子", 2, "未上学")
-print(grand_child)  # print自动执行__str__方法，继承的是son，所以此处super()的实例对象是son
+grand_child = GrandChild("成都","孙子",2,"未上学",gender="女")
+print(grand_child)  # print自动执行__str__方法，继承的是son所以此处super()的实例对象是son
 
 print("-" * 20)
 
@@ -386,3 +421,74 @@ zwj.person_pk_dpg(dog3)
 
 
 #多态：一个类调用多个同名方法，并产生的行为不一样
+
+
+#-------------------------------大海老师复习总结课
+print("-"*30)
+#示例1.
+
+class Parent1:
+    xxx = 333
+    def run(self):
+        print('我是父类的方法')
+
+
+class Sub1(Parent1):
+    xxx = 222
+    def run(self):
+        print('我是子类的方法')
+    pass
+
+
+obj = Sub1()
+par1=Parent1()
+print(Parent1.xxx)  #333
+print(obj.xxx)      #222
+obj.xxx=111
+# 对象 << 类 << 父类
+print(obj.xxx)    #子类实例属性>子类类属性>父类
+obj.run()
+
+
+#示例2.
+'''
+总结对象的相似之处得到了类
+总结类的相似之处得到父类
+'''
+class People:
+    school = '图灵学院'
+    def __init__(self,name,age,sex):
+        self.name = name
+        self.age = age
+        self.sex = sex
+
+
+class Student(People):
+    # def __init__(self,name,age,sex):
+    #     self.name = name
+    #     self.age = age
+    #     self.sex = sex
+    def play(self):
+        print('%s play football，他 %d 岁了' % (self.name,self.age))
+
+
+class Teacher(People):
+    def __init__(self,name,age,sex,workplace):
+        super(Teacher,self).__init__(name,age,"人妖")
+        self.workplace=workplace
+    #     self.name = name
+    #     self.age = age
+    #     self.sex = sex
+    def course(self):
+        print('%s course,性别 %s'%(self.workplace,self.sex))
+# 实例化的时候子类没有__init__方法会调用父类的
+stu1 = Student('周阳',30,'male')
+print(stu1.__dict__)     #__dict__方法作用于实例对象只会打印出实例属性的键值对成字典
+tea1 = Teacher('大海',31,'man',"成都石室中学")
+print(tea1.__dict__)
+stu1.play()
+tea1.course()
+
+
+
+# 但是这里有个问题子类有新的属性需要实例化的时候参数怎么办
