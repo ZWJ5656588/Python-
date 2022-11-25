@@ -29,7 +29,7 @@ if __name__ == '__main__':
     po=Pool()
     po.apply_async(writer,(q,))
     # 等待队列写入
-    time.sleep(0.1)
+    time.sleep(0.5)
     po.apply_async(reader,(q,))
     po.close()
     po.join()

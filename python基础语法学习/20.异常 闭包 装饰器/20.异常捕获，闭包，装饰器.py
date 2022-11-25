@@ -357,7 +357,7 @@ print("-"*20)
 
 # 7.3 @语法糖 可以传参的装饰器
 def debug2(func1):
-    def wrapper(something):
+    def wrapper(something):  # 被装饰器修饰的函数的参数由内部函数接收
         # 规律：内部函数返回被装饰函数的调用
         return func1(something)
     return wrapper
@@ -382,7 +382,7 @@ def logging(level):  #接收装饰器本身参数,level表示日志报警等级
     return wrapper
 
 
-@logging(level="info")  #因为@looging后有一个括号，相当于Logging(lever=info)(say)，调用了wrapper函数，返回inner_wrapper的引用
+@logging(level="info")  #因为@looging后有一个括号，相当于logging(lever=info)(say)，调用了wrapper函数，返回inner_wrapper的引用
 def say1(*args,**kwargs):
     print(f'hello {args}')
 
