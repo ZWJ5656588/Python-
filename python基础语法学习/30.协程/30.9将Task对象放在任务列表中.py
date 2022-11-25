@@ -25,6 +25,7 @@ async def main():
         print(item.result())
 
 
+# 只有添加事件循环之后才可以创建task对象
 loop=asyncio.get_event_loop()
 loop.run_until_complete(main())
 

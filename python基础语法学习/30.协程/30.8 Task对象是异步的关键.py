@@ -19,7 +19,7 @@ async def func():
 async def main():
     print('开始任务...')
     # 创建task对象，将当前的func任务添加到事件循环中
-    task_1 = asyncio.create_task(func())
+    task_1 = func()   # asycnio.run()可以在底层将普通协程对象转换为task对象
     task_2 = asyncio.ensure_future(func())
     print('任务结束...')
 
@@ -31,4 +31,6 @@ async def main():
     print(result_1, result_2)
 
 
+ # asycnio.run()可以在底层将普通协程对象转换为task对象
+ # 这样一来程序还是并发执行
 asyncio.run(main())
