@@ -300,7 +300,7 @@ my_list.add(5)
 
 interator_mylist=Interator_Mylist(my_list)
 
-for item in my_list:
+for item in my_list:  # for 循环会捕捉到StopIteration异常并跳出
     print(item)
 
 

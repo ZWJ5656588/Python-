@@ -10,7 +10,7 @@ class AsyncContextManager:
         return 'crud'
 
     async def __aenter__(self):
-        # 异步连接数据库
+        # 异步连接数据库，耗时操作
         self.conn = await asyncio.sleep(1)
         return self
 
@@ -21,6 +21,7 @@ class AsyncContextManager:
 
 async def func():
     # 上下文管理器处理也需要在协程函数中运行
+    # with 底层有开关
     async with AsyncContextManager() as f:
         result = await f.do_something()
         print(result)
@@ -28,4 +29,5 @@ async def func():
 
 asyncio.run(func())
 
-# 如果要运行类，类中由携程方法，则需要创建外部协程函数来运行这个类
+# 如果要运行类，类中由携程方法，则需要创建外部协程函数来运行这个类，不能直接运行
+

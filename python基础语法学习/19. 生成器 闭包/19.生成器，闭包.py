@@ -40,7 +40,7 @@ def my_range2(n):
 
 #创建一个变量接收生成生成器所返回的迭代器对象
 my_iter=my_range2(5)
-print(next(my_iter))    #执行到yeild被打断
+print(next(my_iter))    #执行到yeild被打断，返回yield后面的返回值
 print(next(my_iter))
 print(next(my_iter))
 print(next(my_iter))
@@ -58,7 +58,7 @@ print("-"*20)
 #由于列表等容器需要占用系统内存，并且在生成内存的时候将元素创建出来，用生成式生成列表运行速率较慢
 
 """这种情况考虑生成器表达式"""
-iter_list=(i for i in range(5000000))  #瞬间执行完毕
+iter_list=(i for i in range(5000000))  #瞬间执行完毕，小括号加表达式
 
 #执行迅速的原因
 """1.生成器表达式返回的不是一个具体的序列数据，返回的是生成器对象
@@ -76,9 +76,12 @@ iter_list=(i for i in range(5000000))  #瞬间执行完毕
 #4.1
 gen = (i for i in range(10000) if i % 2)
 
+print(type(gen))
+print(dir(gen))
 print("__iter__" in dir(gen))
 print("__next__" in dir(gen))
-print("你" in {2:"我",6:"你"})    # 判断字典中是否有相应的键
+print(3 in {2:"我",6:"你"})    # 判断字典中是否有相应的键
+print(2 in {2:"我",6:"你"})    # 判断字典中是否有相应的键
 
 print("-"*20)
 
@@ -104,7 +107,8 @@ class My_range3:
         return MyIterator(self)         #这里__iter__需要返回一个迭代器，需要知道迭代的流程,传入具有__next__方法的实例对象
 
 
-#写一个迭代的流程 __next__方法
+# 写一个具有__next__方法的迭代器返回给Iterable对象
+# 写一个迭代的流程 __next__方法
 class MyIterator:
     def __init__(self,obj):
         self.index=0
@@ -176,48 +180,48 @@ my_iter2.close()  # 关闭生成器 后面再使用next(my_iter2)会报错！！
 
 print("-"*20)
 
-#7. 用迭代器改造学生系统
-class StuSystem:
-    """学生管理系统"""
-    def __init__(self):
-        self.stus=[]
-        self.new_stu = {}
-        self.current_num=0
+# #7. 用迭代器改造学生系统
+# class StuSystem:
+#     """学生管理系统"""
+#     def __init__(self):
+#         self.stus=[]
+#         self.new_stu = {}
+#         elf.current_num=0s
+#
+#     def add(self):
+#         """添加一个学生的基本信息"""
+#         name=input("请输入学生姓名")
+#         tel=input("请输入学学生手机号")
+#         addresss=input("请输入学生的地址")
+#         # self.new_stu={}
+#         self.new_stu["name"]=name
+#         self.new_stu["tel"]=tel
+#         self.new_stu["address"]=addresss
+#         self.stus.append(self.new_stu)        # 将学生信息的字典添加到列表
+#
+#     def __iter__(self):
+#         return self
+#     #自己就是一个迭代器，使用了__next__方法，之前的例子返回的是迭代器类的实例对象
+#     #本例中直接把生成迭代器__iter__方法和迭代具体顺序__next__方法写在一个类中
+#
+#     def __next__(self):
+#         if self.current_num < len(self.stus):
+#             ret=self.stus[self.current_num]
+#             self.current_num+=1
+#             return ret
+#         else:
+#             # self.current_num=0
+#             raise StopIteration
 
-    def add(self):
-        """添加一个学生的基本信息"""
-        name=input("请输入学生姓名")
-        tel=input("请输入学学生手机号")
-        addresss=input("请输入学生的地址")
-        # self.new_stu={}
-        self.new_stu["name"]=name
-        self.new_stu["tel"]=tel
-        self.new_stu["address"]=addresss
-        self.stus.append(self.new_stu)
 
-    def __iter__(self):
-        return self
-    #自己就是一个迭代器，使用了__next__方法，之前的例子返回的是迭代器类的实例对象
-    #本例中直接把生成迭代器__iter__方法和迭代具体顺序__next__方法写在一个类中
-
-    def __next__(self):
-        if self.current_num < len(self.stus):
-            ret=self.stus[self.current_num]
-            self.current_num+=1
-            return ret
-        else:
-            # self.current_num=0
-            raise StopIteration
-
-
-stu_sys=StuSystem()
-
-stu_sys.add()
-stu_sys.add()
-stu_sys.add()
-
-stu_list=[x for x in stu_sys]
-print(stu_list)
+# stu_sys=StuSystem()
+#
+# stu_sys.add()
+# stu_sys.add()
+# stu_sys.add()
+#
+# stu_list=[x for x in stu_sys]   列表中的元素是存储学生信息的字典
+# print(stu_list)
 
 print("-"*20)
 

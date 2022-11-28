@@ -13,7 +13,7 @@ str_a=base64.b64encode(a)
 print(str_a)
 
 # 可以理解成一个中介
-# 将base64解码成字符串
+# 将base64解码成字符串 可以返解
 
 str_b=base64.b64decode(str_a).decode('utf-8')
 print(str_b)

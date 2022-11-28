@@ -3,6 +3,7 @@
 在Future对象中会保存当前执行的这个协程任务的状态，如果当前任务状态为finished, 则await不再等待。
 
 '''
+# future对象会保存当前协程函数的运行状态，若为finished,则await不会等待
 
 import asyncio
 

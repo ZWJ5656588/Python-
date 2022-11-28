@@ -25,7 +25,8 @@ with open('24.3.db1.json', 'wt', encoding='utf-8') as f1:
 
 # 1.3 dump方法将上述过程合为一步
 with open('24.3.db2.json', 'w', encoding='utf-8') as f2:
-    json.dump(dic,f2)  #传文件对象和要序列化的对象
+    json.dump(dic,f2)
+    #传文件对象和要序列化的对象
 
 print('1.'+'-'*20)
 

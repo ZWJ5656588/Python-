@@ -59,7 +59,7 @@ print(Foo.name)
 class Father:
     address="成都"
 
-Son=type('Son',(Father,),{'name':"双双"})
+Son=type('Son',(Father,),{'name':"双双"})  #()是一个元组
 
 print(Son)
 print(Son.name)
@@ -149,15 +149,16 @@ class UpperAttrMetaClass(type):
                 new_attr[name.upper()] = value
 
         # 方法1：通过'type'来做类对象的创建
-        return type(class_name, class_parents, new_attr)
+        return type(class_name, class_parents, new_attr)  # 如果__new__不返回任何实例，则__init__不会被调用
 
         # 方法2：复用type.__new__方法
         # 这就是基本的OOP编程，没什么魔法
         # return type.__new__(cls, class_name, class_parents, new_attr)
 
 
-# python3的用法
+# python3的用法   __metaclass__可以重写type来创建类，作用域是整个模块都有效
 class Foo(object, metaclass=UpperAttrMetaClass):
+    # 约束类UpperAttrMetaClass地址给到metaclass,__metaclass__会运行UpperAttrMetaClass
     bar = '我是一个类属性'
 
 
@@ -173,7 +174,33 @@ print(hasattr(Foo, 'BAR'))
 # 输出:True
 
 f = Foo()
-print(f.BAR)
+print(Foo.BAR)
+
 # 输出:'我是一个类属性'
+
+
+print("-"*20)
+
+# 5.
+def upper_attr(class_name, class_parents, class_attr):
+    # 遍历属性字典，把不是__开头的属性名字变为大写
+    new_attr = {}
+    for name, value in class_attr.items():
+        if not name.startswith("__"):
+            new_attr[name.upper()] = value
+
+    # 调用type来创建一个类
+    return type(class_name, class_parents, new_attr)
+
+
+class Foo(object, metaclass=upper_attr):
+    bar = '我是一个类属性'
+
+
+print(hasattr(Foo, 'bar'))
+print(hasattr(Foo, 'BAR'))
+
+f = Foo()
+print(f.BAR)
 
 

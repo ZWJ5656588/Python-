@@ -2,11 +2,16 @@
  1 使用python编写的.py文件
   python文件就是一系列功能的集合体
 """
+import  os
+import sys
+import spam
 # 1.import导入模块，拿到模块文件下的变量名，类名，对象名
 money=200
 #重复导入没有意义
-import spam
-
+spam_dir_path=os.path.dirname(__file__)
+spam_path=os.path.join(spam_dir_path,"spam.py")
+print(spam_path)
+sys.path.append(spam_path)
 
 print(spam.money)
 print(spam.read1)

@@ -69,3 +69,4 @@ print(os.path.join('a','b','c','D:\\','f','d.txt'))
 print(os.path.join('D:\\','f','d.txt'))
 
 print('2'+'-'*20)
+
