@@ -21,11 +21,11 @@
 '''"""
 
 # 2.1  绝对路径读取,windows默认编码集是gbk，Linux默认是utf-8
-f=open(r"C:\Users\zwj\Desktop\Coputer Science Study\Python\Pycharm文件\pythonProject 源码\图灵学院\21.文件处理 with open\21.a.txt",encoding='utf-8')
-print(f.name)  #访问实例属性name
-f1=f.read()
-print(f1)
-f.close()
+# f=open(r"C:\Users\zwj\Desktop\Coputer Science Study\Python\Pycharm文件\pythonProject 源码\图灵学院\21.文件处理 with open\21.a.txt",encoding='utf-8')
+# print(f.name)  #访问实例属性name
+# f1=f.read()
+# print(f1)
+# f.close()
 
 print("-"*20)
 
@@ -75,14 +75,14 @@ with open(r"21.a.txt", mode="rt", encoding="utf-8") as f:
 print("-"*20)
 
 #2.3.3 文件每一行添加到列表,readlines方法
-l=[]
-_f=open(r"C:\Users\zwj\Desktop\Coputer Science Study\Python\Pycharm文件\pythonProject 源码\图灵学院\21.文件处理 with open\21.a.txt",encoding="utf-8")
-for line in _f:
-    l.append(line)
-print(l)
-path=r"21.a.txt"
-with open(path,'rt',encoding='utf-8') as f13:
-    print(f13.readlines(1))   #取第一行，将\n也作为列表中的元素
+# l=[]
+# _f=open(r"C:\Users\zwj\Desktop\Coputer Science Study\Python\Pycharm文件\pythonProject 源码\图灵学院\21.文件处理 with open\21.a.txt",encoding="utf-8")
+# for line in _f:
+#     l.append(line)
+# print(l)
+# path=r"21.a.txt"
+# with open(path,'rt',encoding='utf-8') as f13:
+#     print(f13.readlines(1))   #取第一行，将\n也作为列表中的元素
 
 print("-"*20)
 
@@ -238,3 +238,12 @@ with open('21.seek指针.txt',mode='rb')as f:
 #     f.seek(-3,2)
 #     print(f.read(3).decode('utf-8'))
 
+print('-'*20)
+
+#  4. 复制文件代码
+# 读取一个文件夹的内容
+with open(r'21.b.text',mode='rt',encoding='utf-8') as f:
+    data1=f.read()
+# 创建一个文件用来接收内容
+with open(r'21.d.receive data',mode='at',encoding='utf-8') as f:
+    f.write(data1)

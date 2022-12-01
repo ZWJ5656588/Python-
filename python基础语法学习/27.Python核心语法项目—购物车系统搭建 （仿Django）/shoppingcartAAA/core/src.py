@@ -1,13 +1,14 @@
 import time
 
-from interface import  bank
-from interface import  user
-
+from interface import bank
+from interface import user
+from lib import common
 
 # 设置一个用户的信息，登录的状态
 
-user_data ={'name':'',
-           'is_auth':False,}
+user_data = {'name': '',
+             'is_auth': False, }
+
 
 # 这里相当于把name 作为全局变量储存在user_data中 方便调用
 
@@ -20,31 +21,31 @@ def login():
         print("已登录")
         return
     print("登录")
-    count=0
+    count = 0
     while True:
-        name=input("输入用户名").strip()
+        name = input("输入用户名").strip()
         # 查询用户是否存在
-        user_dic=user.get_userinfo_by_name(name)
+        user_dic = user.get_userinfo_by_name(name)
         # 判断是否锁定
         # 锁定状态
         if user_dic:
             if user_dic["locked"]:
                 time.sleep(5)
-                count=0
+                count = 0
                 # 这时需要解锁定，写入user_dic，s使得locked边Flase，并写入Json
                 user.unlock_user(name)
-            pwd=input("输入密码").strip()
-            if pwd==user_dic["password"] and user_dic["locked"]==False:
+            pwd = input("输入密码").strip()
+            if pwd == user_dic["password"] and user_dic["locked"] == False:
                 # 用户状态
-                user_data["name"]=name
-                user_data["is_auth"]=True
+                user_data["name"] = name
+                user_data["is_auth"] = True
                 print("登录成功")
                 break
             else:
                 # 密码错误时，计数器加1，
                 print("密码错误")
-                count+=1
-            if count==3:
+                count += 1
+            if count == 3:
                 # user中写一个锁定接口，更新json里的数据
                 user.lock_user(name)
         else:
@@ -57,15 +58,15 @@ def register():
         print("已登录")
         return
     while True:
-        name=input("请输入用户名").strip()
-        user_dic=user.get_userinfo_by_name(name)
+        name = input("请输入用户名").strip()
+        user_dic = user.get_userinfo_by_name(name)
         # print(user_dic)
         # 有值的字典传过来返回True
         while not user_dic:
-            pwd=input("输入密码:").strip()
-            pwd1=input("确认密码:").strip()
-            if pwd==pwd1:
-                user.register_user(name,pwd)
+            pwd = input("输入密码:").strip()
+            pwd1 = input("确认密码:").strip()
+            if pwd == pwd1:
+                user.register_user(name, pwd)
                 break
             else:
                 # 不再输入用户名，重新输入密码确认密码即可
@@ -75,36 +76,71 @@ def register():
             break
         break
 
+
+@common.login_intter
 def check_balance():
     print('查看余额')
     # 需要interface接口 bank.py模块 check_balance_interface方法
-    # #
-    balance=bank.check_balance_interface(user_data["name"])
+    # # 取登录状态的name 从字典中取
+    balance = bank.check_balance_interface(user_data["name"])
+    print('你的余额是%s' % balance)
 
 
+@common.login_intter
 def transfer():
-    print('转账')
+    # 用户查询，查看余额，转账
+    # 要调用3个接口 get userinfo_by_name,check_balance_interface,transfer_interface
+    while True:
+        trans_name = input('请输入转入用户名，q返回退出转账').strip()
+        if trans_name == user_data['name'] or trans_name == user_data['name'].upper():
+            print('不能给自己转账')
+            continue
+        if 'q' == trans_name:
+            break
+        # 查看账户是否存在
+        trans_dic = user.get_userinfo_by_name(trans_name)
+        if trans_dic:
+            trans_money = input("请输入转账金额").strip()
+            if trans_money.isdigit():
+                trans_money = int(trans_money)
+                if trans_money > 0:
+                    # 调用查看余额的接口,根据登录名拿到余额
+                    user_balance = bank.check_balance_interface(user_data['name'])
+                    # 用户余额必须大于转入的钱
+                    if user_balance >= trans_money:
+                        # 写转账接口 user_data['name'],trans_name,trans_money
+                        bank.transfer_interface(user_data['name'], trans_name, trans_money)
+                        break
 
 
+
+
+@common.login_intter
 def repay():
     print('还款')
 
 
+@common.login_intter
 def withdraw():
     print('取款')
 
 
+@common.login_intter
 def check_record():
     print('查看流水')
 
 
+@common.login_intter
 def shopping():
     print('购物')
 
 
+@common.login_intter
 def look_shoppingcart():
     print('查看购物车')
 
+
+@common.login_intter
 def loginout():
     user_data["is_auth"]=False
     print("注销")

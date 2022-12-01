@@ -31,6 +31,7 @@ def register_user(name,pwd,balance=15000):
     # 需要通过谁写入    ？？？
     # db包  db_handle模块 的 db_serialization 对象的方法
     # db_serialization
+    # 向db_handle下的实例对象传入user模块中定义好的user_dict
     db_serialization.update(user_dic)
 
     # 存储一个日志
