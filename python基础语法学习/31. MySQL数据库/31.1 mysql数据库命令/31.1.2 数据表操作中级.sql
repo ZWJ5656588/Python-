@@ -49,6 +49,9 @@ select s.id,s.name,s.gender from students as s;
 select id as 序号,name as 姓名,gender as 性别 from students;
 select id as order_number ,name as 姓名,gender as 性别 from students;
 
+-- 去除字段下重复的值
+select distinct gender from students;
+
 # 例1：查询编号大于3的学生
 
 select * from students where id > 3;
@@ -169,6 +172,7 @@ select avg(height) from students where name like '周%';
 # 1. group by的含义:将查询结果按照1个或多个字段进行分组，字段值相同的为一组
 # 2. group by可用于单个字段分组，也可用于多个字段分组
 select gender from students group by gender;
+select gender,group_concat(name) from students group by gender;
 
 -- 分组显示 group by + group concat(字段名)
 select gender as 性别,group_concat(name) as 姓名 from students group by gender;
@@ -176,6 +180,12 @@ select gender as 性别,group_concat(name) as 姓名 from students group by gend
 
 -- 分别统计性别为男/女的人的个数
 select gender,count(*) from students group by gender;
+
+-- group by +having (分组情况下的条件选择只能用having）
+select gender,count(*) from  students group by gender having count(*)>2 ;
+select gender,avg(height) from  students group by gender having avg(height)>160;
+
+
 
 
 

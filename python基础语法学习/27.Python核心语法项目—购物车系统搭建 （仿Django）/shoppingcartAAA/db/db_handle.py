@@ -8,7 +8,7 @@ class Serialization:
         # print(name)
         path=(r"%s/%s.json" % (DB_path,name))
         if os.path.isfile(path):
-            with open(path,'rt',encoding='utf-8') as f:
+            with open(path,'rt',encoding='gbk') as f:
                 dic=json.load(f)
                 return dic
         else:
@@ -17,7 +17,7 @@ class Serialization:
     # 更新用户注册，写入序列化
     def update(self,user_dic):
         path_file=os.path.join(DB_path,"%s.json" % user_dic["name"])
-        with open(path_file,"wt",encoding="utf-8") as f:
+        with open(path_file,"wt",encoding="gbk") as f:
             # json.dump写入
            json.dump(user_dic,f)
 

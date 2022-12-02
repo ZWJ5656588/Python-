@@ -102,32 +102,85 @@ def transfer():
         if trans_dic:
             trans_money = input("请输入转账金额").strip()
             if trans_money.isdigit():
-                trans_money = int(trans_money)
-                if trans_money > 0:
+                int_trans_money = int(trans_money)
+                if int_trans_money > 0:
                     # 调用查看余额的接口,根据登录名拿到余额
                     user_balance = bank.check_balance_interface(user_data['name'])
                     # 用户余额必须大于转入的钱
-                    if user_balance >= trans_money:
+                    if user_balance >= int_trans_money:
                         # 写转账接口 user_data['name'],trans_name,trans_money
-                        bank.transfer_interface(user_data['name'], trans_name, trans_money)
+                        bank.transfer_interface(user_data['name'], trans_name, int_trans_money)
                         break
+                    else:
+                        print("钱不够")
+            else:
+                print("不是数字，重新键入")
+        else:
+            print('用户不存在')
 
 
 
 
 @common.login_intter
 def repay():
-    print('还款')
+    print('存款')
+    # 调用存款的接口
+    while True:
+        account=input("请输入存款金额").strip()
+        if account=='q':
+           break
+        if account.isdecimal():
+            account=int(account)
+            if account > 0:
+                # 调用存款接口执行存款业务逻辑
+                bank.repay_interface(user_data['name'],account)
+                break
+            else:
+                print("存款应大于0")
+        else:
+            print("请输入数字")
+
+
+
+
 
 
 @common.login_intter
 def withdraw():
     print('取款')
+    while True:
+        withdraw_money=input('请输入取款金额:').strip()
+        if 'q'==withdraw_money:
+            break
+        if withdraw_money.isdigit():
+            withdraw_money=int(withdraw_money)
+            if withdraw_money>0:
+                # 调用查询余额接口，根据登录名拿到余额
+                user_account=bank.check_balance_interface(user_data['name'])
+                # 取款
+                if user_account>= withdraw_money:
+                    # 调用取款接口
+                    bank.withdraw_money(user_data['name'],withdraw_money)
+                    print("%s取款%s成功" % (user_data['name'],withdraw_money))
+                    break
+                else:
+                    print("钱不够")
+            else:
+                print("取款金额需要大于0")
+        else:
+            print("请输入数字")
+
 
 
 @common.login_intter
 def check_record():
     print('查看流水')
+    # 调用查看流水接口执行查看流水的业务逻辑，传入用户名
+    bankflow=bank.check_bank_flow_interface(user_data["name"])
+    # print(bankflow)
+    for record in bankflow:
+        print(record)
+
 
 
 @common.login_intter

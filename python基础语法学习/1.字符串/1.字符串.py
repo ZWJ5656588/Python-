@@ -51,3 +51,8 @@ print(str5.index("a"))
 list1=[5,6,"sd",6589]
 k=list1.index(6)
 print(k)
+
+a='2.0'
+if a.isdigit():
+    print("是数字")
+

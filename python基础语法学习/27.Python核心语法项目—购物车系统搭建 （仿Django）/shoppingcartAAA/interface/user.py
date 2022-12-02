@@ -39,6 +39,7 @@ def register_user(name,pwd,balance=15000):
     # 需要添加log 下面日志文件的路径到 setting 里面
     common.log(f'{name}注册了')
 
+
 # 锁定接口
 def lock_user(name):
 
