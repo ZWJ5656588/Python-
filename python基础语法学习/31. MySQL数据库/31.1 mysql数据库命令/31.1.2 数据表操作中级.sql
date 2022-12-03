@@ -111,13 +111,13 @@ select * from students where id in(1,3,8);  # 不连续范围
 
 select * from students where id between 3 and 8;  # 连续查询 包括3,包括8
 
-# 例12：查询编号是3至8的男生
+-- # 例12：查询编号是3至8的男生
 
 select * from students where (id between 3 and 8) and gender='男';
 
 
-#  空字符串在数据库中不等同于none
-# 例13：查询没有填写身高的学生
+-- #  空字符串在数据库中不等同于none
+-- # 例13：查询没有填写身高的学生
 
 select * from students where height is null;
 
@@ -133,18 +133,18 @@ select * from students where height is not null and gender=1;
 
 
 -- --------------------------- 排序 ------------------------------
-# 1.查询未删除的男生信息 按学号降序
-# 先确定范围，再排序,默认升序(asc) 降序需要写明desc
+-- # 1.查询未删除的男生信息 按学号降序
+-- # 先确定范围，再排序,默认升序(asc) 降序需要写明desc
 select * from students where gender=1 order by  id desc ;
 
-# 例3：显示所有的学生信息，先按照年龄从大到小排序，当年龄相同时，按照身高从高到矮排序
+-- # 例3：显示所有的学生信息，先按照年龄从大到小排序，当年龄相同时，按照身高从高到矮排序
 
 select * from students  order by age desc,height desc;  #当年龄相同时，按照身高降序，多个条件通过逗号隔开
 
 
 
 
-# -----------------为了快速得到统计数据，经常会用到如下5个聚合函数-----------------------
+-- -----------------为了快速得到统计数据，经常会用到如下5个聚合函数-----------------------
 
 
 -- count(*)表示计算总行数，括号中写星与列名，结果是相同的
@@ -158,6 +158,8 @@ select count(name) from students;
 -- 2. 查询女生编号的最大值
 select max(id) from students where gender=2;
 
+select max(height),name from students;
+
 -- 3.求和
 -- 查询未删除女生得总年龄
 select sum(height) from students where gender='男' and is_delete=0;
@@ -169,8 +171,8 @@ select avg(height) from students where name like '周%';
 -- ------------------  分组  ---------------------------
 # group by
 #
-# 1. group by的含义:将查询结果按照1个或多个字段进行分组，字段值相同的为一组
-# 2. group by可用于单个字段分组，也可用于多个字段分组
+-- # 1. group by的含义:将查询结果按照1个或多个字段进行分组，字段值相同的为一组
+-- # 2. group by可用于单个字段分组，也可用于多个字段分组,且没有重复值
 select gender from students group by gender;
 select gender,group_concat(name) from students group by gender;
 
@@ -204,5 +206,19 @@ select * from students where id>=6 and id <=10;
 select * from students limit  5,5;  # 这个类似于索引,从索引5(id=6)往后取5个数据
 select * from students order by id desc limit 4,5 ;   # 这个情况是以最后id=14作为索引0，往前取5个数据
 
-# !!! 不能在limit写公式 且limit翻页必须要在最后一页
+-- # !!! 不能在limit写公式 且limit翻页必须要在最后一页
 
+-- 子查询
+select * from students where age > (select avg(age) from students);
+
+select name from classes where id in (select cls_id from students);
+
+select max(height),name,age from students;
+
+select * from students where (height,age)=(select max(height),max(age) from students);
+-- 没有同时满足年龄最大，身高最高的
+
+--选择身高最高的女生
+select name,age,gender,max(height) as height from students where gender=2;
+
+-- 不用子查询，不用外键查询！！！
