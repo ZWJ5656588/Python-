@@ -9,6 +9,26 @@
 方便操作，特别是查询操作，减少复杂的SQL语句，增强可读性
  */
 
-
+-- 定义视图
 create  view  视图名称  as select 语句
+-- 视图名称可以看做一个函数名称
+
+-- 查询视图
+-- 本质上视图其实是一张虚表,在数据库中创建视图，查询时会跟着表一起查出来
+show tables;
+
+
+
+-- 案例 查询安徽省下所有的城市，使用视图
+select city.* from tb_areas as city INNER JOIN tb_areas
+as province on city.pid=province.aid where province.atitle="安徽省";
+
+-- --------------       视图封装         -------------------------
+create view  v_city_anhui as select city.* from tb_areas as city INNER JOIN tb_areas
+as province on city.pid=province.aid where province.atitle="安徽省";
+
+-- 查看视图
+select * from v_city_anhui;
+
+
 

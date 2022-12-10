@@ -129,7 +129,7 @@ def insert_record():
     cursor = db.cursor()
 
     # SQL 插入语句
-    sql = "insert into employee (first_name, last_name, age, sex, income, create_time) values 0 " \
+    sql = "insert into employee (first_name, last_name, age, sex, income, create_time) values  " \
           "('%s', '%s', %d, '%s', %d, '%s')" % ('小', '王', 22, '男', 30000, datetime.datetime.now())
     # 执行 SQL 语句
     try:

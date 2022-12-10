@@ -15,7 +15,7 @@ def dance():
 
 
 def main():   # 运行main的线程是主线程
-    print(f'程序开始：{ctime()}')
+    print(f'程序开始：{ctime()}')  # ctime()记录运行时格式化时间
     #创建两个线程对象
     t1=threading.Thread(target=sing)    # 主线程里定义两个子线程
     t2=threading.Thread(target=dance)
@@ -24,6 +24,8 @@ def main():   # 运行main的线程是主线程
     t2.start()
 
     # sleep(6)
+    # t1.join()
+    # t2.join()
     print(f'程序结束：{ctime()}')         # 如果主线程代码执行完毕，但子线程还在任务中，主线程会等待子线程任务执行完毕后退出程序！！
 
 

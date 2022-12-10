@@ -15,7 +15,7 @@ create table classes
     name varchar(10)  -- 最大长度10
 );
 
-create table students
+/*create table students
 (
     id int unsigned auto_increment primary key not null ,
     name varchar(20) default '',
@@ -25,7 +25,7 @@ create table students
     gender enum('男','女','人妖','未知'),
     cls_id int unsigned default 0
 
-);
+);*/
 
 
 -- 2. 查询表结构
@@ -69,8 +69,12 @@ values (3,'安娜',18,178.256,'女',2);
 -- 12.物理删除数据
 delete from students where id=5;
 
-insert into students values (0,'顾安',30,176.24,'男',1),(0,'王逸群',21,172.263,'未知',1),(0,'孙起杰',21,179.999,'人妖',0);
+delete from students where id=2;
 
+insert into students values (0,'顾安',30,176.24,'男',1,1),(0,'王逸群',21,172.263,'未知',1,1),(0,'孙起杰',21,179.999,'人妖',2,1);
 insert into students(id, name, age, height, gender)
 values (0,'大头',22,175.6,'男');
 
+insert into students values (0,'朱文峻',21,182.652,'男',2,1);
+
+update students set name='小小明' where id=1;

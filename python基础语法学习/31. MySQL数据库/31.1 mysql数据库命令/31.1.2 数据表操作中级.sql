@@ -204,7 +204,7 @@ select  * from students limit 5;
 -- 4.查询id 为 6-10的数据，用户设置的开始位置-1
 select * from students where id>=6 and id <=10;
 select * from students limit  5,5;  # 这个类似于索引,从索引5(id=6)往后取5个数据
-select * from students order by id desc limit 4,5 ;   # 这个情况是以最后id=14作为索引0，往前取5个数据
+select * from students order by id desc limit 4,5 ;   # 这个情况是以最后的id作为索引0，往前取5个数据
 
 -- # !!! 不能在limit写公式 且limit翻页必须要在最后一页
 

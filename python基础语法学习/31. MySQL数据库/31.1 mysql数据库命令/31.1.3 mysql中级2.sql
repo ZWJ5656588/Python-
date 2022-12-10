@@ -52,5 +52,21 @@ select * from students as s right join classes as c on s.cls_id=c.id;
 - 在这个表中，结构不变，可以添加区县、乡镇街道、村社区等信息
 */
 
+create table tb_areas(
+    aid int primary key ,
+    atitle varchar(20),
+    pid int
+);
 
+-- 自关联表示了表内部列的关系
+select city.* from tb_areas as city INNER JOIN tb_areas
+as province on city.pid=province.aid where province.atitle="安徽省";
+
+-- 这里其实是引用了两次表，重命名两次,select city.* 只筛选出第一次引用的表的所有主键
+-- 相当于把表复制一份再按照规则拼接，然后在按照select剪切
+
+select * from tb_areas as zone INNER JOIN tb_areas
+as city on zone.pid=city.aid where city.atitle="淮南市";
+
+insert into classes(name) values ("python_04班");
 

@@ -27,6 +27,22 @@ show create database 数据库名称;
 -- 7.退出交互模式
  \q;
 
+create table students2(
+    id int unsigned auto_increment primary key not null ,
+    name varchar(20),
+    age tinyint unsigned,
+    sex enum('男','女'),
+    hobbies varchar(10),
+    -- unique 约束 ，若字段值不为空，则全表唯一
+    tel char(11) not null unique
+);
+insert into  students2 values (0,'张三',18,'男','唱'),(0,'李四',19,'男','跳'),(0,'小红',19,'女','rap'),(0,'只因',20,'男','篮球');
+
+select * from students2 where sex='男';
+
+delete from students2 where id=3;
+
+update students2 set sex='女';
 
 
 

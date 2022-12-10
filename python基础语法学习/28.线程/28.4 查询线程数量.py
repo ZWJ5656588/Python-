@@ -22,11 +22,9 @@ if __name__ == "__main__":
 
     print(f'程序结束：{ctime()}')
 
-
-
     while True:
         length = len(threading.enumerate())
-        print(f'当前线程数量: {length}')
+        print(f'当前线程数量: {length}')  # 主线程会等待
         if length <= 1:
             break
         sleep(0.5)
