@@ -158,7 +158,7 @@ class Student:
 
     def student_name(self, name):
         self.name = name
-        print(self)         # 打印的就是实例对象      ,                  <__main__.Student object at 0x00000185CE9DB7C0>，，0x开头是该实例对象的地址
+        print(self)         # 打印的就是实例对象      ,         <__main__.Student object at 0x00000185CE9DB7C0>，，0x开头是该实例对象的地址
         return f"学生{self.name}就读于{Student.school}"
 
 
@@ -208,5 +208,5 @@ class Child2(Parent):
 print(Parent.x, Child1.x, Child2.x)
 Child1.x = 2
 print(Parent.x, Child1.x, Child2.x)
-Child1.x = 3
+Parent.x = 3
 print(Parent.x, Child1.x, Child2.x)   #child2实例对象没有.x属性，要到父类里面找，改变Parent.x会影响未重写的子类属性

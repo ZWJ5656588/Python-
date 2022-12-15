@@ -20,6 +20,7 @@ tcp_client_socket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)  #ipv4网络 
 sever_ip=input('请输入服务器ip地址')
 sever_port=int(input("请输入服务器端口:"))
 #connect()方法与服务器建立连接,连接服务器的ip,端口号组成的元组。服务器accept()方法捕捉到即可解阻塞
+# 端口和ip以元组形式传入connect方法
 tcp_client_socket.connect((sever_ip,sever_port))
 
 # 1.3 发送信息

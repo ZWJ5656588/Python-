@@ -31,7 +31,7 @@ def main():
         op_num=input('请输入要操作的功能序号:')
         # 根据用户选择调用相应函数
         if op_num=='1':
-            send_msg(udp_socket)
+            send_msg(udp_socket)    # 将套接字对象传入功能函数
         elif op_num=='2':
             recv_msg(udp_socket)
         elif op_num=='exit':

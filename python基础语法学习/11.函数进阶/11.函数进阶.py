@@ -193,7 +193,7 @@ salaries={
 
 print(max(salaries))
 
-"""max底层是for循环，默认比较字典的key
+"""max底层是for循环，默认比较字典的key,返回key
 比较的是key,返回的也是key,现在要比较value，返回key"""
 """写一个函数来改变比较规则"""
 def run(name):
@@ -294,7 +294,7 @@ print("-"*20)
 
 
 #4.1.3 嵌套列表取数字
-L = [1,[2,[3,[4,[5,[6,[7,[8,[9,]]]]]]]]]
+L = [1,[2,[3,[4,[5,[6,[7,[8,[9]]]]]]]]]
 def get_number(list):
     for n in list:
         if isinstance(n,int):
@@ -311,7 +311,7 @@ print("\n"+"-"*20)
 #4.2  可变类型形参不会销毁
 def func(a,b=[]):
 
-    b.append(a)   #apppend方法返回值是新的列表，
+    b.append(a)
 
     print(b)
 
@@ -365,15 +365,38 @@ print("-"*20)
 #6.1闭包函数、
 def outer():
     # 自由变量
-    name = '大海'
+    name="大海"
     print('外面的函数正在运行')
     def inner():
         print('里面的函数正在运行')
+        # nonlocal name
+        name="harden"
         return name
     return inner
+
+
 inner=outer()
-# print(name)   报错，自由变量受函数体保护，不能直接调用
+# print(name)   #报错，自由变量受函数体保护，不能直接调用，可以使用nonlocal重新声明，使其不受保护
 print(inner())
+
+
+print("-"*20)
+
+def test1(*args, **kwargs):
+    print("----在test1函数中----")
+    print("args:", args)
+    print("kwargs", kwargs)
+
+
+# 7.1 函数传参注意解包
+def test2(*args, **kwargs):
+    print("----在test2函数中----")
+    print("args:", args)
+    print("kwargs", kwargs)
+    test1(args, kwargs)  # 在函数test1传递参数时没有进行拆包，相当于全部传给了*args
+
+
+test2(11, 22, 33, name="顾安", age=18)
 
 
 

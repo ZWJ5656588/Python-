@@ -81,7 +81,7 @@ stu01 = Student("学生1")
 # 直接给教室对象添加属性
 """Classroom类型创建一个实例属性，指向Stuent类下的实例对象，该属性被class205实例对象调用"""
 class205.stu = stu01
-class205.stu
+
 print("-" * 20)
 
 

@@ -18,7 +18,7 @@ tcp_sever_socket.listen(128)   #最多可以创建128个套接字
 #第一个元素：新创建一个套接字:数据发送/数据接收，因为第一个创建的套接字是负责连接的
 #第二个元素：客户端的ip和port
 #直接对返回的元组进行拆包，连接套接字一个服务器只需要一个
-new_socket,client_address=tcp_sever_socket.accept()
+new_socket,client_address=tcp_sever_socket.accept()  # 拆包，new_socket收发信息，client_address为客户端ip和port
 
 #1.5 接听对方打过来的电话
 recv_message=new_socket.recv(1024)

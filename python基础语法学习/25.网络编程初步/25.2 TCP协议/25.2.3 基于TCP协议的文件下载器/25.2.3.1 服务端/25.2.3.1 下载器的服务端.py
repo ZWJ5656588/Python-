@@ -2,7 +2,7 @@ import socket
 
 def get_file(file_name):  # 读出要传输的文件内容并
     try:
-        with open(file_name,'rb') as f:        # 要发送的是二进制的文件，所以用rb模式打开,不能指定encoding
+        with open(file_name,'rb') as f:        # 要发送的是二进制的文件，所以用rb模式打开,发送时不需要编码，不能指定encoding
             content=f.read()
             return content
     except:

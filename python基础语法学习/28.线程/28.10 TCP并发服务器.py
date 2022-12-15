@@ -51,7 +51,7 @@ class TCPServer(threading.Thread):
             print(f'客户端已连接:{client_info}')
             Message(new_socket,client_info).run()  # 实例对象调用父类thread类中的run()方法
 
-    def __del__(self):
+    def __del__(self):   # 当一个对象的引用计数为0时，自动调用析构函数__del__进行垃圾回收
         # 关闭套接字
         self.sever_socket.close()
 

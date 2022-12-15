@@ -56,7 +56,7 @@ linux.install_app(pycharm)  # 对象关联
 
 linux.install_app(chrome)
 linux.install_app(chrome)
-print(linux)
+print(linux.apps)
 
 print("-" * 20)
 
@@ -96,7 +96,8 @@ class Test:
     name = "zwj"
 
     def __init__(self, *args):
-        self.name, self.address = args  # 返回值拆包
+        print(args)
+        self.name, self.address = args  # *args把传过来的两个元素放在元组里面，args就是一个元组
 
     def info(self):
         print(f"{self.name},{self.address}")
@@ -166,9 +167,9 @@ class Test:
         self.name = name
         self.age = age
 
-    def __getattribute__(self, item):
+    def __getattribute__(self, item):  # 调用某个属性时，这个item会拿到属性的名称
         print(item)
-        return object.__getattribute__(self, item)  # 属性的获取机理就是传到object类调用getattribute方法
+        return object.__getattribute__(self, item)  # 属性的获取机理就是传到object类调用__getattribute__方法
         # return self.name #无线递归,报错,所以不能在getattribute中返回实例属性self
 
 
@@ -349,14 +350,14 @@ p.test_static()
 print("-" * 20)
 
 
-# 11.1property属性
+# 11.1property属性,把实例方法转为实例属性调用
 class Page:
     def __init__(self, current_age):
         self.current_age = current_age
         # 每页显示的数据条数
         self.per_items = 10
 
-    @property
+
     def start(self):  # 被@property修饰的方法不能传递除实例对象本身的额外参数
         # 1
         val = (self.current_age - 1) * self.per_items
@@ -369,7 +370,7 @@ class Page:
 
 
 p = Page(2)  # 第二个页面是第十到第二十的数据
-print(p.start)
+print(p.start())
 print(p.end)
 print("-" * 20)
 
@@ -488,10 +489,12 @@ class Money:
         else:
             print("传入的值不是一个整数")
 
+    # 类属性操作
     money=property(get_money,set_money,"这是对金额的操作")
 
 
 m=Money()
+print(m.money)
 m.money=200
 print(m.money)
 
@@ -514,6 +517,7 @@ class Money:
             print("value值不是浮点类型")
 
 
+# 修改私有属性较为方便
 m=Money()
 print(m.money)
 m.money=50.0

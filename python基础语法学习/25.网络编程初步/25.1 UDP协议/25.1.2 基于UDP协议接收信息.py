@@ -24,6 +24,7 @@ recv_data=udp_socket.recvfrom(1024)  #1024表示最大接收1KB
 第一个参数是对方发送的数据
 第二个参数是对方ip和端口
 与sendto方法对应
+没有收到数据时，程序会阻塞
  """
 print(recv_data[0].decode('gbk'))    #decode解码
 print(recv_data[1])
