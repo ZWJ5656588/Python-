@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* 后代选择 */
+		/* 下面这个案例 只要是div标签下的叫p标签的都会选中
+		不论是子标签还是孙标签*/
+		div p{
+			color : red;
+		}
+		
+		/* 先选择类在选择子集 */
+		.con span{
+			background-color: green;
+		}
+		
+		/* 全部选择类  注意类和类之间要留空格符号*/
+		.con .pink{
+			font-size: 60px;	
+		}
+		
+		
+		
+	</style>
+</head>
+<body>
+	<div>
+		<p>hello
+		<p>1111</p>
+		</p>
+	</div>
+	
+	<div class="con">
+		<span>哈哈</span>
+		<a href="#" class="pink">百度</a>
+		<a href="#" class="gold">谷歌</a>
+	</div>
+	<span>你好</span>
+	<a href="#" class="pink">新浪</a>
+	<div>匿蝶</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签</title>
+</head>
+<body>
+<!--1. <form>标签 表示表单标签，定义整体的表单区域
+2. <label>标签 表示表单元素的文字标注标签，定义文字标注
+3. <input>标签 表示表单元素的用户输入标签，定义不同类型的用户输入数据方式
+   - type属性
+     - type="text" 定义单行文本输入框
+     - type="password" 定义密码输入框
+     - type="radio" 定义单选框
+     - type="checkbox" 定义复选框
+     - type="file" 定义上传文件
+     - type="submit" 定义提交按钮
+     - type="reset" 定义重置按钮
+     - type="button" 定义一个普通按钮
+4. <textarea>标签 表示表单元素的多行文本输入框标签 定义多行文本输入框
+5. <select>标签 表示表单元素的下拉列表标签 定义下拉列表
+   - <option>标签与<select>标签配合，定义下拉列表中的选项
+-->
+    <form action="">
+    <p>
+    <!-- for 可以绑定同名的输入框-->
+        <label for="11">姓名:</label><input type="text" id="11">
+    </p>
+    <p>
+        <label for="">密码：</label><input type="password">
+    </p>
+    <p>
+        <label for="">爱好:</label>
+        <input type="checkbox">唱歌
+        <input type="checkbox">跳舞
+        <input type="checkbox">lol
+        <input type="checkbox">篮球
+        <input type="checkbox">看小姐姐
+        <input type="checkbox">编程
+    </p>
+    <p>
+        <label for="">照片上传</label>
+        <input type="file">
+    </p>
+    <p>
+        <label for="">个人描述：</label>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+    </p>
+    <p>
+        <label for="">性别：</label>
+        <input type="radio">男
+        <input type="radio">女
+    </p>
+    <p>
+        <label for="">籍贯：</label>
+        <select name="" id="">
+            <option value="">北京</option>
+            <option value="">上海</option>
+            <option value="">安徽</option>
+            <option value="">四川</option>
+            <option value="">浙江</option>
+        </select>
+    </p>
+        <input type="submit" value="点击提交">
+        <input type="reset"  value="清空重置">
+    </p>
+    </form>
+</body>
+</html>

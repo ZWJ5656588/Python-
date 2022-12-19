@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- 不推荐使用id选择器 id不会重复 -->
+	<style>
+		/* 注意 #后面直接加id名 不留空格 */
+		#box {
+			color: red;
+			
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p id="box">这是一个段落标签</p>   <!-- 对应以上一条样式，其它元素不允许应用此样式 -->
+		<p id="box one">这是第二个段落标签</p> <!-- 无法应用以上样式，每个标签只能有唯一的id名 -->
+		<p>这是第三个段落标签</p> <!-- 无法应用以上样式，每个标签只能有唯一的id名  -->
+	</div>
+	
+</body>
+</html>

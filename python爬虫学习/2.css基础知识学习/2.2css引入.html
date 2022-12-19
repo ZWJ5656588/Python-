@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>css引入</title>
+	
+		<!-- 2. 内嵌式 -->
+		<style type="text/css">
+			h2{
+				color: darkred;
+			}
+		</style>
+		<!-- 3.外链式 单独的css文件 -->
+		<link rel="stylesheet" href="./2.3外链式引入.css">
+	
+</head>
+
+<body>
+		<h2>我真帅</h2>
+		<h3>我是匿蝶</h3>
+		<!-- 1.行内式 -->
+		<!-- div是块元素，自己占一行 -->
+		<div style="background:pink;">hello</div>
+		
+		<!-- 行内式优先级大于外链式大于内嵌式 -->
+		<!-- 行内式基本不用，一般交互的时候用外链式 -->
+	
+</body>
+</html>
