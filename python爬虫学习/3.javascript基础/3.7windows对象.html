@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 等待页面加载完毕再执行代码体中的操作
+		window.onload=function()
+		{
+			// 因为id是唯一的 js通常by id来获取标签
+			var div1=document.getElementById("div1")
+			// window是浏览器中最高级的对象
+			alert(div1);
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">这是一个div标签</div>
+</body>
+</html>

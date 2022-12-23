@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function()
+		{
+			var div1 = document.getElementById("div1");
+			// 读取数据
+			var text = div1.innerHTML;
+			// 打印标签里的数据
+			console.log(text)
+			
+			// 修改标签中的内容,内容要在引号内,引号内的引号注意不要起冲突
+			div1.innerHTML = '<a href="https://github.com/">github官网</a>';
+		}
+	</script>
+	<body>
+		<div id="div1">这是一个div元素</div>
+	</body>
+</html>

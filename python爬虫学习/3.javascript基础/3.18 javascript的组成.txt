@@ -1,0 +1,10 @@
+JavaScript可以分为三个部分：ECMAScript标准、DOM、BOM。
+
+- ECMAScript标准
+  	即JS的基本语法，JavaScript的核心，描述了语言的基本语法和数据类型，ECMAScript是一套标准，定义了一种语言的标准与具体实现无关。
+  
+- DOM
+  即文档对象模型，Document Object Model，用于操作页面元素，DOM可以把HTML看做是文档树，通过DOM提供的API可以对树上的节点进行操作。
+  
+- BOM
+  即浏览器对象模型，Browser Object Model，用于操作浏览器，比如：弹出框、控制浏览器跳转、获取分辨率等。

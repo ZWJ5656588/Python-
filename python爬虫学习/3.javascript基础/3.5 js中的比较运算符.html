@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript">
+		// "==" 默认等号两边的值转换为number类型进行比较，隐式转换
+		// 用"==="进行全等于判断 类型，数值全相等 与C/Python均不同
+		var num1=12;
+		var num2="12";
+		var a=4;
+		var b=9;
+		if (num1 == num2)
+		{
+			alert("相等");
+		}
+		else
+		{
+			alert("不相等");
+		}
+		
+		// 使用===不进行隐式转换
+		if (num1 === num2)
+		{
+			alert("相等");
+		}
+		else
+		{
+			alert("不相等");
+		}
+		
+		// &&前表达式成立,输出&&后表达式的结果
+		console.log(a && b+3); // 输出9
+		// ||前表达式成立,输出||前表达式的结果
+		console.log(a || b+1);
+	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

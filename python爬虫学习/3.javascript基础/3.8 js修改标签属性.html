@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+	    .sty01{
+	        font-size:20px;
+	        color:red;
+	    }
+	
+	
+	</style>
+	
+	<script>
+	/*1. html的属性和js里面属性大多数写法一样，但是“class” 属性写成 “className”
+	2. “style” 属性里面的属性，有横杠的改成驼峰式，比如：“font-size”，改成”style.fontSize”
+*/
+
+		window.onload = function()
+		{
+			var input1 = document.getElementById('input1');
+			var a1 = document.getElementById('link01');
+			// 读取属性
+			console.log(input1.value);
+			console.log(input1.type);
+			console.log(input1.name);
+			console.log(a1.herf)
+			
+			// 读取class时，需要写成className
+			console.log(a1.className);
+			
+			// 设置属性值
+			a1.style.color = 'yellow';
+			a1.style.fontSize = "40px";
+			
+		}
+	</script>
+	
+</head>
+<body>
+	<input type="text" name="setsize" id="input1" value = "20px">
+	<a href="#" id="link01" class="sty01">这是一个链接</a>
+</body>
+</html>
