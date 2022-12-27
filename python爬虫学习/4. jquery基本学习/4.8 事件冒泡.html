@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>"></script>
+		<script type="text/javascript">
+			$(function(){
+				var div1 = $("#div1");
+				var div2 = $("#div2");
+				
+				// 事件冒泡 点击事件会向上传递
+				div1.click(function(){
+					console.log("111")
+				})
+				
+				div2.click(function(){
+					console.log("222")
+				})
+				
+				
+			})
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</head>
+	<body>
+		 <div id="div1" style="width:200px; height:200px; background: red;">
+		    <div id="div2" style="width:100px; height:100px;background: yellow;">
+		        哈哈
+		    </div>
+		</div>
+	</body>
+</html>

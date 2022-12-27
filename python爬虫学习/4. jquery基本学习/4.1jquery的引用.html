@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- jquery在线引用地址 "https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js" -->
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		
+		<script>	
+			window.onload = function()
+			{
+				var div1 = document.getElementById("div01")
+				console.log("这个原生js获得到的数据: " + div1)
+			}
+			
+			// jquery的$简化
+			
+			// 类似于window.onload = function()函数,等待页面加载完成执行
+			// 比原生的js更快
+			$(document).ready(function(){
+				var div2=$("#div01");
+				console.log("这个是jQuery获取的元素:"+div2)
+				})
+				
+			// 简化写法
+			$(function(){
+				var div3=$("#div01");
+				console.log("这个是简化jQuery获取的元素:"+div3)
+				
+			})
+				
+				
+				
+			
+			
+		</script>
+			
+			
+			
+	
+	</head>
+	<body>
+		<div id = "div01">这是一个div标签</div>
+	</body>
+</html>

@@ -11,9 +11,14 @@
 		// 顺序读取 没有遇到创建的div标签 会弹出null
 		alert(div1)
 		
+		
 	</script>
 </head>
 <body>
-	<div id="div1">这是一个div标签</div>
+	<div id="div1" class="37">这是一个div标签</div>
+	<script>
+		var class1 = document.getElementById("div1")
+		console.log(class1.className)
+	</script>
 </body>
 </html>

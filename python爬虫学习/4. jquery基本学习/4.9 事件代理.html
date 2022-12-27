@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				// 1. 直接选中字标签
+				// var li1 = $("#list li")
+				// li1.click(function(){
+				// 	$(this).css({'background':'red'})
+				// })
+				
+				
+				// 2.通过选中父标签代理子标签操作
+				var li2 = $("#list")
+				li2.delegate('li','click',function(){
+					$(this).css({'background':'pink'})
+				})
+				
+			})
+			
+			
+			
+		</script>
+		
+		
+
+	</head>
+	<body>
+		<ul id="list">
+		    <li>1</li>
+		    <li>2</li>
+		    <li>3</li>
+		    <li>4</li>
+		    <li>5</li>
+		</ul>
+	</body>
+</html>

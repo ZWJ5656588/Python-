@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// 1. id 选择器 $("#...")
+				var id1 = $("#div1")
+				console.log(id1.length)
+				// 输出lenth结果大于0，则代表选中了标签
+				
+				// 2.类选择器
+				var class1 = $(".myclass");
+				console.log(class1.length+1)
+				
+				// 其他的选择器 类似于css
+				$('#myId') //选择id为myId的标签
+				$('.myClass') // 选择class为myClass的标签
+				$('li') //选择所有的li标签
+				$('#ul1 li span') //选择id为ul1标签下的所有li标签下的span标签
+				
+				// 属性选择,jQuery独有
+				var data1 = $('input[name=first]') // 选择name属性等于first的input标签
+				console.log(data1.length+2)
+				
+				
+				
+			})
+		</script>
+		
+	</head>
+	<body>
+		<div id="div1" class="myclass">这是一个div元素	
+		</div>
+		<input type="text" name="first" id="input1" value="20px">
+		<a href="#" id= "myId" class="sty01">这是一个链接</a>
+	</body>
+</html>

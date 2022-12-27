@@ -8,3 +8,8 @@ JavaScript可以分为三个部分：ECMAScript标准、DOM、BOM。
   
 - BOM
   即浏览器对象模型，Browser Object Model，用于操作浏览器，比如：弹出框、控制浏览器跳转、获取分辨率等。
+
+
+
+
+document对象其实是window对象下的一个子对象，它操作的是HTML文档里所有的内容。事实上，浏览器每次打开一个窗口，就会为这个窗口生成一个window对象，并且会为这个窗口内部的页面（即HTML文档）自动生成一个document对象，然后我们就可以通过document对象来操作页面中所有的元素

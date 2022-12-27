@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			json是 JavaScript Object Notation 的首字母缩写，翻译过来就是javascript对象表示法，
+			这里说的json就是类似于javascript对象的字符串，
+			它同时是一种数据格式，目前这种数据格式比较流行，逐渐替换掉了传统的xml数据格式。
+			*/
+		   
+		   // XML json  是结构化数据
+		   // html      是非结构化数据
+		   
+		   /*
+		   json有两种格式：
+		   
+		   1. 对象格式
+		   2. 数组格式
+			*/
+			
+			
+		//  json本质上是字符串，如果在js中操作json数据，可以将json字符串转化为JavaScript对象。
+		var sJson = '{"name":"tom","age":18}';
+		// JSON.parse进行反序列化，将json转换为js对象
+		var oPerson = JSON.parse(sJson);
+		// JSON.stringify进行序列化，将js对象转换为json数据
+		JSON.stringify(data)
+		
+		// 操作属性,必须要
+		alert(oPerson.name);
+		alert(oPerson.age);
+		
+		
+		</script>
+	</head>
+	
+	<body>
+	</body>
+</html>

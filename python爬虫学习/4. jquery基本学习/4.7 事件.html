@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			// 选择了类名为list的标签下的所有li标签
+			var li1=$('.list li');
+			
+			var button1=$("#button1");
+			var text1=$("#text1");
+			var div1=$("#div1");
+			
+			// 1. 设置一个鼠标点击事件
+			li1.click(function(){
+				// 原生js写法
+				this.style.background='red'
+				// $(this)指当前发生的事件
+				// jQurey写法
+				$(this).css({'background-color':'pink'})
+			})
+			
+			
+			// 2.鼠标点击配合按钮使用
+			button1.click(function(){
+				console.log(text1.val())
+			})
+			
+			// 3.获取焦点
+			text1.focus(function(){
+				$(this).css({'background-color':'red'})
+			})
+			
+			// 4. 失去焦点
+			text1.blur(function(){
+				$(this).css({'background-color':'white'})
+			})
+			
+			// 5.鼠标进入
+			div1.mouseover(function(){
+				$(this).css({'background':'gold'})
+			})
+			
+			// 6.鼠标离开
+			div1.mouseout(function(){
+				$(this).css({'background':'white'})
+			})
+		})
+		
+		
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+		    <ul class="list">
+		        <li>列表文字</li>
+		        <li>列表文字</li>
+		        <li>列表文字</li>
+		    </ul>
+		
+		    <input type="text" id="text1">
+		    <input type="button" id="button1" value="点击">
+		</div>
+	</body>
+</html>

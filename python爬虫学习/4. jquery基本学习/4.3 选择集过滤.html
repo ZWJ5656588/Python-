@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// has 过滤标签 对选择器选中的标签进行选择
+				var div1 = $("div").has("#mytext")
+				// jQuery设置样式 .css方法 键值对
+				div1.css({'background-color':'red'})
+				
+				
+				// eq方式进行过滤 选中索引下标的形式
+				// 选中div标签中下标为1的元素 即是第二个标签
+				var div2 = $("div").eq(1)
+				// jQuery设置样式 .css方法 键值对
+				div2.css({'background-color':'red'})
+				
+		
+			})
+		</script>
+	</head>
+	 
+	<body>
+		<div>
+		    这是第一个div
+		    <input type="text" id="mytext">
+		</div>
+		
+		<div id="youtext">
+		    这是第二个divs
+		    <input type="text">
+		    <input type="button">
+		</div>
+		
+		<div  id="3">
+			这是第三个div
+		</div>
+	</body>
+</html>
