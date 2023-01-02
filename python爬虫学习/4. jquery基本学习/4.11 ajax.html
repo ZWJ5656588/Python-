@@ -3,26 +3,39 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-	<script type="text/javascript"></script>
-	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js">
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>
 		
-		/*
+		<!-- /*
 		ajax 是 Asynchronous JavaScript and XML的简写，ajax一个前后台配合的技术，
 		它可以让 javascript 发送异步的 http 请求，
 		与后台通信进行数据的获取，ajax 最大的优点是实现局部刷新，ajax可以发送http请求，
 		当获取到后台数据的时候更新页面显示数据实现局部刷新，
 		在这里大家只需要记住，当前端页面想和后台服务器进行数据交互就可以使用ajax了。
-		*/
+		*/ -->
 	   
 	   
-	   $.ajax({
-		   // 1. 请求网址 请求自己的服务器接口
-		   url:'https://www.icourse163.org/',
-		   // 2. 请求方法
-		   type:'GET',
-		   // 返回数据的格式
-	   })
-	</script>
+	  <script>
+	      $.ajax({
+	      // 1.url 请求地址
+	      url:'http://www.liulongbin.top:3006/api/getbooks',
+	      // 2.type 请求方式，默认是'GET'，常用的还有'POST'
+	      type:'GET',
+	      // 3.dataType 设置返回的数据格式，常用的是'json'格式
+	      dataType:'JSON',
+	      // 4.data 设置发送给服务器的数据, 没有参数不需要设置
+	  
+	      // 5.success 设置请求成功后的回调函数
+	      success:function (response) {
+	          console.log(response);    
+	      },
+	      // 6.error 设置请求失败后的回调函数
+	      error:function () {
+	          alert("请求失败,请稍后再试!");
+	      },
+	      // 7.async 设置是否异步，默认值是'true'，表示异步，一般不用写
+	      async:true
+	  });
+	  </script>
 	</head>
 	<body>
 	</body>

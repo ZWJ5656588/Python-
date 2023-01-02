@@ -4,7 +4,7 @@ import re
 # 获取资源地址
 url = 'http://image11.m1905.cn/uploadfile/2021/0922/thumb_0_647_500_20210922030733993182.jpg'
 
-# 创建套接字对象,发送请求
+# 创建套接字对象,发送请求 ip和端口
 client = socket.socket()
 
 # 创建连接
