@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+	<script type="text/javascript">
+		$(function(){
+			var a = $('div');
+			a.css({'background':'red'});
+			
+			var b = $('div p');
+			b.html('我是子元素');
+			
+			// 通过索引过滤
+			var c=$('div p').eq(1);
+			c.css({'background':'orange'});
+			
+			// 追加
+			b.append('添加的文本');
+			
+			var d =$('ul li').eq(4);
+			d.html('<li></li>');
+		})
+		
+		$.ajax({
+			url:'http://www.liulongbin.top:3006/api/getbooks',
+			type:'GET',
+			dataType:"JSON",
+			success:function(response){
+				var box1 = $("#box1");
+				res = response["data"]
+				console.log(res)
+				for(var i=0;i<res.length;i++)
+				{
+					box1.append(res[i]["author"]);
+					box1.append("<br>")
+				}
+			}
+			
+		})
+		
+</script>
+		
+	
+	
+	
+
+</head>
+<body>
+	 <button id="change1">点击改变背景颜色</button>
+	
+	    		    <button id="change2">点击修改子元素内容</button>
+	
+	    		    <button id="change3">点击修改p元素背景</button>
+	
+	    		    <button id="cv">点击克隆p元素</button>
+	
+	    		    <button id="del">点击删除最后的li元素</button>
+	
+	    		    <button id="ajax_req">发送ajax请求获取数据</button>
+	
+	    		    <div>
+	
+	    		        <p>关关雎鸠，在河之洲。</p>
+	
+	    		        <p>窈窕淑女，君子好逑。</p>
+	
+	    		        <p>参差荇菜，左右流之。</p>
+	
+	    		        <p>窈窕淑女，寤寐求之。</p>
+	
+	    		        <p>求之不得，寤寐思服。</p>
+	
+	    		        <p>悠哉悠哉，辗转反侧。</p>
+	
+	    		        <ul>
+	
+	    		            <li>《西游记》</li>
+	
+	    		            <li>《红楼梦》</li>
+	
+	    		            <li>《水浒传》</li>
+	
+	    		            <li>《三国演义》</li>
+	
+	    		            <li>《金瓶梅》</li>
+	
+	    		        </ul>
+	
+	    				<div id="box1"></div>
+	
+	    				
+	
+	    		    </div>
+	
+	```
+</body>
+</html>
